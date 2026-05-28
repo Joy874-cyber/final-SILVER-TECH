@@ -23,7 +23,8 @@ export function Navbar() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/dashboard', label: 'Dashboard' },
+    { href: '/dashboard', label: 'Command Center' },
+    { href: '/dashboard/overview', label: 'Admin' },
   ];
 
   const isActive = (href: string) => pathname === href;

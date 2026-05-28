@@ -8,17 +8,21 @@ import { LiveCameraGrid } from '@/components/live-camera-grid';
 import { TacticalMap } from '@/components/tactical-map';import { CameraStatus } from '@/components/camera-status';import { motion } from 'framer-motion';
 import { BarChart3, Activity, Users, AlertTriangle, Video, HardDrive } from 'lucide-react';
 import { TacticalCard } from '@/components/tactical-card';
+import Link from 'next/link';
+import { Settings, Shield, Clock, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Dashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const stats = [
-    { icon: Users, label: 'Officers Online', value: '1,247', color: 'cyan' },
-    { icon: Activity, label: 'Active Incidents', value: '3', color: 'red' },
-    { icon: AlertTriangle, label: 'Alerts Today', value: '24', color: 'yellow' },
-    { icon: BarChart3, label: 'Camera Uptime', value: '99.8%', color: 'green' },
-    { icon: Video, label: 'Total Videos', value: '12,584', color: 'cyan' },
-    { icon: HardDrive, label: 'Storage Used', value: '2.4TB', color: 'yellow' },
+    { icon: Users, label: 'Officers Online', value: '0', color: 'cyan' },
+    { icon: Activity, label: 'Active Incidents', value: '0', color: 'red' },
+    { icon: AlertTriangle, label: 'Alerts Today', value: '0', color: 'yellow' },
+    { icon: BarChart3, label: 'Camera Uptime', value: '0.0%', color: 'green' },
+    { icon: Video, label: 'Total Videos', value: '0', color: 'cyan' },
+    { icon: Shield, label: 'Verified Alerts', value: '0', color: 'red' },
+    { icon: HardDrive, label: 'Storage Used', value: '0.0GB', color: 'yellow' },
   ];
 
   return (
@@ -32,15 +36,30 @@ export default function Dashboard() {
       <div className={`transition-all duration-300 ${sidebarCollapsed ? 'md:ml-20' : 'md:ml-60'} pt-20`}>
         <div className="p-6 max-w-7xl">
           {/* Dashboard header */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <h1 className="text-3xl font-bold text-cyan-300 mb-2">Command Center Dashboard</h1>
-            <p className="text-slate-200">Real-time monitoring and incident management</p>
-          </motion.div>
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-3xl font-bold text-cyan-300 mb-2">Command Center Dashboard</h1>
+              <p className="text-slate-200">Real-time monitoring and incident management</p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link href="/dashboard/overview">
+                <Button className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-400/30 gap-2">
+                  <Shield className="w-4 h-4" />
+                  Admin Dashboard
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
 
           {/* Stats grid */}
           <motion.div
