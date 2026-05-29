@@ -74,7 +74,7 @@ export default function OverviewPage() {
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 flex items-center gap-2">
                     <Server className="w-5 h-5" />
-                    Infrastructure Status
+                    Devices Status
                   </h3>
                   <div className="flex items-center gap-2 px-3 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full text-xs">
                     <ShieldCheck className="w-3 h-3" />
